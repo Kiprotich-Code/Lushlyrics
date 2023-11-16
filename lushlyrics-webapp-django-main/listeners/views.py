@@ -11,8 +11,8 @@ def login_listener(request):
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
-            login(user)
-            messages.success('Login Successful')
+            login(request, user)
+            messages.success(request, ('Login Successful'))
             return redirect('home')
         
         else:
@@ -33,7 +33,7 @@ def register_listener(request):
             return redirect('login')
         
         else:
-            messages.success('Invalid form')
+            messages.success(request, ('Invalid form'))
     else:   
         form = UserCreationForm()
     
