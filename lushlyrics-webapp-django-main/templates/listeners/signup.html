@@ -24,12 +24,8 @@
                 {% csrf_token %}
 
                 <span class='label signup-title center-align'>Register Here!</span>
-                <input type="text" class="form_input" name="username" placeholder="Enter your name." required>
-                <input type="password" class="form_input" id="pwd" name="password" placeholder="Create a password."
-                    required>
-                <input type="password" class="form_input" id="cpwd" name="confirm-password" oninput="checkPassword(this)"
-                    placeholder="Re-type your password" required>
-                <button class='btn btn_log_in' type="submit">Sign up</button>
+                {{ form.as_p }}
+                <input type="submit" name="signup" value="Signup">
                 <div class="divider"></div>
                 <p class='label center-align'>Already have an account? <a href="{% url 'login'%}">Log in</a>.</p>
             </form>

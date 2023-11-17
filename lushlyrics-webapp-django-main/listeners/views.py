@@ -29,11 +29,8 @@ def register_listener(request):
             form.save()
             username = form.cleaned_data['username']
             password = form.cleaned_data['password1']
-            messages.success("Registered Sucessful")
+            messages.success(request, ("Registered Sucessful"))
             return redirect('login')
-        
-        else:
-            messages.success(request, ('Invalid form'))
     else:   
         form = UserCreationForm()
     
