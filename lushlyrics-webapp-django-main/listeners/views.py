@@ -35,3 +35,8 @@ def register_listener(request):
         form = UserCreationForm()
     
     return render(request, 'listeners/signup.html', {'form': form})
+
+def logout_listener(request):
+    messages.success(request, (f"See you again!"))
+    logout(request)
+    return redirect('/')
