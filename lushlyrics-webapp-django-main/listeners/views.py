@@ -12,8 +12,7 @@ def login_listener(request):
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
-            login(request, user)
-            messages.success(request, ('Login Successful'))
+            login(request, user)            
             return redirect('home')
         
         else:
@@ -31,7 +30,6 @@ def register_listener(request):
             email = form.cleaned_data['email']
             username = form.cleaned_data['username']
             password = form.cleaned_data['password1']
-            messages.success(request, ("Registered Sucessful"))
             return redirect('login')
     else:   
         form = RegisterUserForm()
@@ -39,6 +37,6 @@ def register_listener(request):
     return render(request, 'listeners/signup.html', {'form': form})
 
 def logout_listener(request):
-    messages.success(request, (f"See you again!"))
+    messages.success(request, (f"You've logged out, See you again!"))
     logout(request)
     return redirect('login')
