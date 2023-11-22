@@ -6,6 +6,7 @@ from django.urls.base import reverse
 from django.contrib.auth import authenticate,login,logout
 from youtube_search import YoutubeSearch
 import json
+from django.contrib.auth.decorators import login_required
 # import cardupdate
 
 
@@ -13,6 +14,7 @@ import json
 f = open('card.json', 'r')
 CONTAINER = json.load(f)
 
+@login_required
 def default(request):
     global CONTAINER
 
