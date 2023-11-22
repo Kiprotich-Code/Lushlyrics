@@ -1,6 +1,9 @@
 {% extends './signup.html'%}
 {% load static %}
 
+{% block css %}
+    <link rel="stylesheet" href="{static 'formStyle.css'}">
+{% endblock %}
 {% block content %}
         <div class="signup_body">
             <form class="login_form" method='POST'>
@@ -9,11 +12,11 @@
                     Username
                 </label>
 
-                <input type="text" class="form_input" pattern="[A-Za-z0-9.@_-e]+" name="username" placeholder="Email address or username" required>
+                <input type="text" class="form_input form_lg_input" pattern="[A-Za-z0-9.@_-e]+" name="username" placeholder="Email address or username" required>
                 <label for="login-username" class="label">
                     Password
                 </label>
-                <input type="password" class="form_input" name="password" placeholder="Password" required>
+                <input type="password" class="form_input form_lg_input" name="password" placeholder="Password" required>
                 <button class='btn btn_log_in' type="submit">Log in</button>
                 <div class="divider"></div>
                 <p class='label center-align'>Don't have an account?</p>

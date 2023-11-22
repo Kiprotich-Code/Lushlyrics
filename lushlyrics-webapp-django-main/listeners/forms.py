@@ -4,31 +4,17 @@ from django.contrib.auth.models import User
 
 # Create your forms here
 class RegisterUserForm(UserCreationForm):
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder': 'Enter Email'}))
+
     class Meta:
         model = User
-        fields = ('username', 'email', 'password1', 'password2')
-        widgets = {
-            'username': forms.TextInput(attrs={
-                'class': 'form-control',
-                'style': 'max-width: 300px',
-                'placeholder': 'Enter Your Name'
-            }),
+        fields = ('email', 'username', 'first_name', 'last_name')
 
-            'email': forms.EmailInput(attrs={
-                'class': 'form-control',
-                'style': 'max-width: 300px',
-                'placeholder': 'Enter Your Email',
-            }),
+    def __init__(self, *args, **kwargs):
+        super(RegisterUserForm, self).__init__(*args, **kwargs)
 
-            'password1': forms.TextInput(attrs={
-                'class': 'form-control',
-                'style': 'max-width: 300px',
-                'placeholder': 'Enter Your Password'
-            }),
-
-            'password2': forms.TextInput(attrs={
-                'class': 'form-control',
-                'style': 'max-width: 300px',
-                'placeholder': 'Confirm Password'
-            }),
-        }
+        self.fields['username'].widget.attrs['placeholder'] = 'Enter Username'
+        self.fields['first_name'].widget.attrs['placeholder'] = 'Enter First Name'
+        self.fields['last_name'].widget.attrs['placeholder'] = 'Enter Last Name'
+        self.fields['password1'].widget.attrs['placeholder'] = 'Enter Password'
+        self.fields['password2'].widget.attrs['placeholder'] = 'Confirm Password'

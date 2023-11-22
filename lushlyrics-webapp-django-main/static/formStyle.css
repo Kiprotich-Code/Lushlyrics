@@ -8,9 +8,6 @@ body {
 }
 
 body {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
   font-family: Circular, Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
@@ -131,10 +128,4 @@ input:focus {
     margin-top: 20px;
     margin-bottom: 30px;
     background: #d9dadc;
-}
-
-
-.signup-title {
-    font-size: 28px;
-    margin-bottom: 30px;
 }
