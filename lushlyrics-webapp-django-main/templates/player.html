@@ -20,7 +20,7 @@
 
 <body>
 
-
+{% block content %}
 <div class="grid-container">
 	<div class="sidebar">
 
@@ -116,7 +116,7 @@
                     </svg>
                 </div>
                 <span class='username hide-onhover'>{{ request.user }}</span>
-                <span class='logout username'>Logout</span>
+                <span class='{% url "logout"%}'>Logout</span>
             </button>
 
 
@@ -493,6 +493,7 @@ progressBar.addEventListener('input', function () {
 
     });
 </script>
+{% endblock %}
 </body>
 
 </html>

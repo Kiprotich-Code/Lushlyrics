@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
+from .forms import RegisterUserForm
 
 # Create your views here.
 def login_listener(request):
@@ -24,19 +25,20 @@ def login_listener(request):
 
 def register_listener(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = RegisterUserForm(request.POST)
         if form.is_valid():
             form.save()
+            email = form.cleaned_data['email']
             username = form.cleaned_data['username']
             password = form.cleaned_data['password1']
             messages.success(request, ("Registered Sucessful"))
             return redirect('login')
     else:   
-        form = UserCreationForm()
+        form = RegisterUserForm()
     
     return render(request, 'listeners/signup.html', {'form': form})
 
 def logout_listener(request):
     messages.success(request, (f"See you again!"))
     logout(request)
-    return redirect('/')
+    return redirect('login')
