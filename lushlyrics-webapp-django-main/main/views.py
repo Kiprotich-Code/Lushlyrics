@@ -14,7 +14,7 @@ from django.contrib.auth.decorators import login_required
 f = open('card.json', 'r')
 CONTAINER = json.load(f)
 
-@login_required
+@login_required(login_url='login')
 def default(request):
     global CONTAINER
 
